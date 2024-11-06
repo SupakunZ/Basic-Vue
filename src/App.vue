@@ -73,6 +73,19 @@ export default {
       return this.salary >= 35000 ? "Project manager" : "Programmer";
     },
   },
+  watch: {
+    // #ใช้สำหรับติดตามข้อมูลที่สนใจว่าจะให้ทำอะไรมีมีการเปลี่ยนแปลง (same useEffect) ใช้กับ Asyn ได้
+    salary(value) {
+      //ค่าที่ทำการติดตาม
+      if (value > 50000) {
+        alert("เงินเดือนไม่ควรเกิน 50,000 บาท");
+        setTimeout(() => {
+          // * asynchronous
+          this.salary = 50000;
+        }, 100);
+      }
+    },
+  },
 };
 </script>
 
@@ -182,4 +195,7 @@ export default {
 <!-- v-show vs v-if -->
 <!--1. v-show #ซ่อนหรือแสดง elm นั้นออกมา โดยที่ elm นั้นมีอยู่แล้ว-->
 <!--2. v-if #แทรก elm นั้นเลยโดยที่ elm นั้นไม่มีอยู่-->
+
+<!-- Watcher #ใช้สำหรับติดตามข้อมูลที่สนใจว่าจะให้ทำอะไรมีมีการเปลี่ยนแปลง (same useEffect) ใช้กับ Asyn ได้ -->
+
 
